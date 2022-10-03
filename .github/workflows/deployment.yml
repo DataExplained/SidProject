@@ -5,7 +5,7 @@ on:
     branches:
       - "main"
     paths:
-      - ./sidstar-backend/sidstar-backend/Dockerfile
+      - ./sidstar-backend/sidstar-backend
 
 jobs:
   build:
