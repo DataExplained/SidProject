@@ -29,5 +29,7 @@ jobs:
           REPOSITORY: sid_backend
           IMAGE_TAG: ${{ github.sha }}
         run: |
+          cd sidstar-backend
+          cd sidstar-backend
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
