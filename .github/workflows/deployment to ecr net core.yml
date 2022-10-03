@@ -1,4 +1,4 @@
-name: Deployment to production
+name: .net core Deployment
 
 on: [push]
 
