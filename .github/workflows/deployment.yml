@@ -2,6 +2,8 @@ name: Deployment to production
 
 on:
   push:
+    branches:
+      - "master"
     paths:
       - ./sidstar-backend/sidstar-backend
 
