@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  sidstar-backend:
+    container_name: sidstar-backend
+    restart: always
+    build: ./sidstar-backend/sidstar-backend
+    ports:
+      - "8081:80"
+
+  frontend-sidstar:
+    container_name: frontend-sidstar
+    restart: always
+    build: ./frontend-sidstar
+    ports:
+      - "8082:8080"
