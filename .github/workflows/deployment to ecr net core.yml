@@ -34,12 +34,13 @@ jobs:
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
            # Push the new image ID in the Amazon ECS task definition
+
       - name: Push the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: enigma-container
+          container-name: sid-container
           image: ${{ steps.build-image.outputs.image }}
 
       # Deploy Amazon ECS task definition
