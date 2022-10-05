@@ -30,8 +30,7 @@ namespace sidstar_backend.Controllers
             return getTop2waypoints(SID_, AirportInput.AirportName);
         }
 
-        [HttpPost("AllAirports")]
-        public List<SidOutput> ForAllAirportGet(Authetication_ authetication_)
+        private List<SidOutput> Getting_data(Authetication_ authetication_,string typesOfData) 
         {
             List<string> ListOfAirportNames = new List<string>();
             ListOfAirportNames = getListAirports(authetication_.authetication);
@@ -39,7 +38,7 @@ namespace sidstar_backend.Controllers
 
             foreach (string AirportName in ListOfAirportNames)
             {
-                var client = new RestClient("https://open-atms.airlab.aero/api/v1/airac/sids/airport/" + AirportName);
+                var client = new RestClient("https://open-atms.airlab.aero/api/v1/airac/"+typesOfData+"/airport/" + AirportName);
                 client.Timeout = -1;
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("api-key", authetication_.authetication);
@@ -70,22 +69,43 @@ namespace sidstar_backend.Controllers
 
 
             return AllSidOutputs;
+
+        }
+
+        [HttpPost("AllAirports")]
+        public SidsAndStarsCombine ForAllAirportGet(Authetication_ authetication_)
+        {
+            List<string> ListOfAirportNames = new List<string>();
+            ListOfAirportNames = getListAirports(authetication_.authetication);
+            List<SidOutput> AllSidOutputs = new List<SidOutput>();
+            SidsAndStarsCombine sidsAndStarsCombine = new SidsAndStarsCombine();
+   
+
+            sidsAndStarsCombine.sid = Getting_data(authetication_, "sids");
+            sidsAndStarsCombine.stars =Getting_data(authetication_, "stars");
+
+            return sidsAndStarsCombine;
         }
 
         private List<string> getListAirports(string key)
         {
-            var client = new RestClient("https://open-atms.airlab.aero/api/v1/airac/airports");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("api-key", key);
-            IRestResponse response = client.Execute(request);
+            List < Airport > AirportList = new List<Airport >();
+            try
+            {
+                var client = new RestClient("https://open-atms.airlab.aero/api/v1/airac/airports");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("api-key", key);
+                IRestResponse response = client.Execute(request);
 
 
-            var deserialize = new JsonDeserializer();
+                var deserialize = new JsonDeserializer();
 
-            //list of airports and its data
-            List<Airport> AirportList = deserialize.Deserialize<List<Airport>>(response);
+                //list of airports and its data
+                AirportList = deserialize.Deserialize<List<Airport>>(response);
 
+            }
+            catch { }
             List<string> ListOfAirportNames = new List<string>();
 
             foreach (Airport airport in AirportList)

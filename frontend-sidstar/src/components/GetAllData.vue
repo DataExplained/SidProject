@@ -1,6 +1,105 @@
 <template>
-  <button @click="getTopTwoWaypoints">Refresh</button>
-  <p>{{ this.getTopTwoWaypointsjson }}</p>
+  <main>
+    <label>Authetication Key: </label>
+    <input v-model="authenticate_" type="text" class="input-element" />
+
+    <button @click="getTopTwoWaypoints">Enter</button>
+    <p></p>
+    <div>
+      <label class="label1">SIDs - Top 2 Waypoints</label>
+      <p></p>
+      <p>
+        <input
+          type="text"
+          id="myInput"
+          @keyup="searchSID"
+          placeholder="Search for Airports names.."
+          v-model="searchTermSids"
+        />
+      </p>
+
+      <section v-if="getTopTwoWaypointsjson !== []">
+        <table id="myTable">
+          <tr class="header">
+            <th style="width: 20%">Airports</th>
+            <th style="width: 20%">1st Waypoint</th>
+            <th style="width: 20%">Count</th>
+            <th style="width: 20%">2nd Waypoint</th>
+            <th style="width: 20%">Count</th>
+          </tr>
+
+          <tr v-for="result in this.finalSid" :key="result.id">
+            <td>{{ result.airportName }}</td>
+            <td v-if="result.topWaypointCounts !== null">
+              {{ result.topWaypointCounts[0].key }}
+            </td>
+            <td v-if="result.topWaypointCounts === null">_</td>
+
+            <td v-if="result.topWaypointCounts !== null">
+              {{ result.topWaypointCounts[0].value }}
+            </td>
+            <td v-if="result.topWaypointCounts === null">_</td>
+            <td v-if="result.topWaypointCounts !== null">
+              {{ result.topWaypointCounts[1].key }}
+            </td>
+            <td v-if="result.topWaypointCounts === null">_</td>
+            <td v-if="result.topWaypointCounts !== null">
+              {{ result.topWaypointCounts[1].value }}
+            </td>
+            <td v-if="result.topWaypointCounts === null">_</td>
+          </tr>
+        </table>
+      </section>
+    </div>
+
+    <p></p>
+    <div>
+      <label class="label1">Stars - Top 2 Waypoints</label>
+      <p></p>
+      <p>
+        <input
+          type="text"
+          id="myInput"
+          @keyup="searchStars"
+          placeholder="Search for Airports names.."
+          v-model="searchTermStars"
+        />
+      </p>
+
+      <section v-if="getTopTwoWaypointsjson !== []">
+        <table id="myTable">
+          <tr class="header">
+            <th style="width: 20%">Airports</th>
+            <th style="width: 20%">1st Waypoint</th>
+            <th style="width: 20%">Count</th>
+            <th style="width: 20%">2nd Waypoint</th>
+            <th style="width: 20%">Count</th>
+          </tr>
+
+          <tr v-for="result in this.finalStars" :key="result.id">
+            <td>{{ result.airportName }}</td>
+            <td v-if="result.topWaypointCounts !== null">
+              {{ result.topWaypointCounts[0].key }}
+            </td>
+            <td v-if="result.topWaypointCounts === null">_</td>
+
+            <td v-if="result.topWaypointCounts !== null">
+              {{ result.topWaypointCounts[0].value }}
+            </td>
+            <td v-if="result.topWaypointCounts === null">_</td>
+            <td v-if="result.topWaypointCounts !== null">
+              {{ result.topWaypointCounts[1].key }}
+            </td>
+            <td v-if="result.topWaypointCounts === null">_</td>
+            <td v-if="result.topWaypointCounts !== null">
+              {{ result.topWaypointCounts[1].value }}
+            </td>
+            <td v-if="result.topWaypointCounts === null">_</td>
+          </tr>
+        </table>
+      </section>
+    </div>
+  </main>
 </template>
 
 <script>
@@ -8,24 +107,58 @@ export default {
   name: "GetAllData",
   data() {
     return {
+      authenticate_: "",
       ListOfAirports: [],
       nameOfAirportsOnly: [],
       getTopTwoWaypointsjson: [],
+      searchTermSids: "",
+      searchTermStars: "",
+      tablerow: [],
+      sid: [],
+      stars: [],
+      finalSid: [],
+      finalStars: [],
     };
   },
   methods: {
-    //get all the airport names
+    searchSID() {
+      this.finalSid = [];
+
+      for (let i = 0; i < this.sid.length; i++) {
+        if (this.sid[i].airportName.includes(this.searchTermSids)) {
+          this.finalSid.push(this.sid[i]);
+        }
+      }
+    },
+
+    searchStars() {
+      this.finalStars = [];
+
+      for (let i = 0; i < this.stars.length; i++) {
+        if (this.stars[i].airportName.includes(this.searchTermStars)) {
+          this.finalStars.push(this.stars[i]);
+        }
+      }
+    },
+
     async getAllAirportName() {
+      console.log(this.authenticate_);
+
       var myHeaders = new Headers();
-      myHeaders.append("api-key", "123");
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        authetication: this.authenticate_,
+      });
 
       var requestOptions = {
-        method: "GET",
+        method: "POST",
         headers: myHeaders,
+        body: raw,
         redirect: "follow",
       };
 
-      await fetch("http://localhost:8081/api/Airport", requestOptions)
+      await fetch("https://localhost:44341/api/Airport", requestOptions)
         .then((response) => response.json())
         .then((json) => (this.ListOfAirports = json))
         .catch((error) => console.log("error", error));
@@ -39,17 +172,32 @@ export default {
 
     //get the top 2 waypoints
     async getTopTwoWaypoints() {
+      console.log(this.authenticate_);
+      var myHeaders = new Headers();
+
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        authetication: this.authenticate_,
+      });
+
       var requestOptions = {
-        method: "GET",
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
         redirect: "follow",
       };
 
-      await fetch("http://localhost:8081/api/SID/AllAirports", requestOptions)
+      await fetch("https://localhost:44341/api/SID/AllAirports", requestOptions)
         .then((response) => response.json())
         .then((json) => (this.getTopTwoWaypointsjson = json))
+        .then()
         .catch((error) => console.log("error", error));
 
-      console.log(this.getTopTwoWaypointsjson);
+      this.sid = this.getTopTwoWaypointsjson.sid;
+      this.stars = this.getTopTwoWaypointsjson.stars;
+      this.finalSid = this.sid;
+      this.finalStars = this.stars;
     },
   },
 };
@@ -57,6 +205,37 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.input-element {
+  width: 400px;
+}
+
+div {
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 0 auto;
+  background: #a0c5e8;
+  padding: 10px 10px 10px 10px;
+}
+span {
+  width: 50px;
+  height: 50px;
+  background: black;
+}
+button {
+  margin: 10px;
+}
+.label1 {
+  font-size: 3rem;
+  margin: 0 3rem;
+  padding: 1rem;
+  font-weight: bold;
+}
 header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 3rem auto;

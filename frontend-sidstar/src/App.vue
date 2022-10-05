@@ -1,5 +1,7 @@
 <template>
-  <GetAllData></GetAllData>
+  <main>
+    <GetAllData></GetAllData>
+  </main>
 </template>
 
 <script>
