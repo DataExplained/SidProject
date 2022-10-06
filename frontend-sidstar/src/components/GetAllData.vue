@@ -146,6 +146,15 @@ export default {
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Access-Control-Allow-Origin", "*");
+      myHeaders.append(
+        "Access-Control-Allow-Methods",
+        "POST,GET,OPTIONS, PUT, DELETE"
+      );
+      myHeaders.append(
+        "Access-Control-Allow-Headers",
+        "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization"
+      );
 
       var raw = JSON.stringify({
         authetication: this.authenticate_,
@@ -158,7 +167,7 @@ export default {
         redirect: "follow",
       };
 
-      await fetch("https://localhost:44341/api/Airport", requestOptions)
+      await fetch("http://localhost:8081/api/Airport", requestOptions)
         .then((response) => response.json())
         .then((json) => (this.ListOfAirports = json))
         .catch((error) => console.log("error", error));
@@ -176,7 +185,16 @@ export default {
       var myHeaders = new Headers();
 
       myHeaders.append("Content-Type", "application/json");
-
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Access-Control-Allow-Origin", "*");
+      myHeaders.append(
+        "Access-Control-Allow-Methods",
+        "POST,GET,OPTIONS, PUT, DELETE"
+      );
+      myHeaders.append(
+        "Access-Control-Allow-Headers",
+        "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization"
+      );
       var raw = JSON.stringify({
         authetication: this.authenticate_,
       });
@@ -188,7 +206,7 @@ export default {
         redirect: "follow",
       };
 
-      await fetch("https://localhost:44341/api/SID/AllAirports", requestOptions)
+      await fetch("http://localhost:8081/api/SID/AllAirports", requestOptions)
         .then((response) => response.json())
         .then((json) => (this.getTopTwoWaypointsjson = json))
         .then()

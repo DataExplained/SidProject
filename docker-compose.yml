@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+      
   sidstar-backend:
     container_name: sidstar-backend
     restart: always
