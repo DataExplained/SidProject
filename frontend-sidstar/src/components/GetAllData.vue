@@ -185,7 +185,7 @@ export default {
       var myHeaders = new Headers();
 
       myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("Content-Type", "application/json");
+      //myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Access-Control-Allow-Origin", "*");
       myHeaders.append(
         "Access-Control-Allow-Methods",

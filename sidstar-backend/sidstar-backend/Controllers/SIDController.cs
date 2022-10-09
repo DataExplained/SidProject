@@ -3,11 +3,13 @@ using Models;
 using RestSharp;
 using RestSharp.Deserializers;
 using sidstar_backend.Models;
+using System.Web.Http.Cors;
 
 namespace sidstar_backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SIDController : Controller
     {
         

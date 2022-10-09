@@ -26,3 +26,9 @@ C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\obj\Debug\net6.
 C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\obj\Debug\net6.0\sidstar-backend.pdb
 C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\obj\Debug\net6.0\sidstar-backend.genruntimeconfig.cache
 C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\bin\Debug\net6.0\RestSharp.dll
+C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\bin\Debug\net6.0\System.Web.Cors.dll
+C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\bin\Debug\net6.0\System.Web.Http.dll
+C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\bin\Debug\net6.0\System.Web.Http.Cors.dll
+C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\jiada\Downloads\SidStar\sidstar-backend\sidstar-backend\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

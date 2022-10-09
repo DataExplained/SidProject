@@ -6,9 +6,11 @@ using RestSharp.Deserializers;
 
 using Models;
 using sidstar_backend.Models;
+using System.Web.Http.Cors;
 
 namespace sidstar_backend.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [Route("api/[controller]")]
     [ApiController]
     public class AirportController : ControllerBase
