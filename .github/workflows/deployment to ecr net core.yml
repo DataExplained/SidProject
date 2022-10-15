@@ -39,9 +39,9 @@ jobs:
         id: sid-task
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition.json
+          task-definition: ./sidstar-backend/sidstar-backend/task-definition.json
           container-name: sid-container
-          image: d99fed3aba77ac0ebea0b92afa52e2563417b2fd
+          image: 67ef8c855e77061a385d02fffe0062a05f8991a6
 
       # Deploy Amazon ECS task definition
       - name: Deploy Amazon ECS task definition
