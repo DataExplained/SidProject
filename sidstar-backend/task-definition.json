@@ -29,7 +29,7 @@
       "memoryReservation": 500,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "675735647272.dkr.ecr.ap-southeast-1.amazonaws.com/sid_backend:f4e90b4ed8ae662bf541be0a377f63574c62a7af",
+      "image": "675735647272.dkr.ecr.ap-southeast-1.amazonaws.com/sid_backend:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
