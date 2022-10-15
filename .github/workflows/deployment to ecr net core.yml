@@ -41,7 +41,7 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: sid-container
-          image: ${{ steps.build-image.outputs.image }}
+          image: d99fed3aba77ac0ebea0b92afa52e2563417b2fd
 
       # Deploy Amazon ECS task definition
       - name: Deploy Amazon ECS task definition
