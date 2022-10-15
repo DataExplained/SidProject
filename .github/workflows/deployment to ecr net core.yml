@@ -23,7 +23,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build, tag, and push docker image to Amazon ECR
-        ###
+        id: build-image
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: sid_backend
@@ -41,7 +41,7 @@ jobs:
         with:
           task-definition: ./sidstar-backend/sidstar-backend/task-definition.json
           container-name: sid-container
-          image: 67ef8c855e77061a385d02fffe0062a05f8991a6
+          image: ${{ steps.build-image.outputs.image }}
 
       # Deploy Amazon ECS task definition
       - name: Deploy Amazon ECS task definition
