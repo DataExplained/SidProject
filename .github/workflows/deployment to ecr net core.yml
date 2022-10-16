@@ -43,11 +43,11 @@ jobs:
           container-name: sidstar-backend
           image: ${{ steps.build-image.outputs.image }}
 
-      # Deploy Amazon ECS task definition
+      # Deploy Amazon ECS task definitions
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: sid-services
-          cluster: Sid-cluster-project
+          cluster: Sid-cluster-backend
           wait-for-service-stability: true

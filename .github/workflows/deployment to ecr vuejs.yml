@@ -48,5 +48,5 @@ jobs:
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: sid-services
-          cluster: Sid-cluster
+          cluster: Sid-cluster-frontend
           wait-for-service-stability: true
