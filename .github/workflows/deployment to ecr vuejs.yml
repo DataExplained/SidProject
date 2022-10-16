@@ -31,7 +31,6 @@ jobs:
           cd frontend-sidstar
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-          wait-interval: 15
 
       - name: Push the new image ID in the Amazon ECS task definition
         id: task-def
