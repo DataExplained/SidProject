@@ -47,6 +47,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: sid-frontend
-          cluster: sid-cluster
+          service: sid-services
+          cluster: Sid-cluster
           wait-for-service-stability: true
