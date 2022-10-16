@@ -38,7 +38,11 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ./frontend-sidstar/task-definition.json
+<<<<<<< HEAD
           container-name: sid-frontend
+=======
+          container-name: frontend-sidstar
+>>>>>>> parent of 6f938ea... change name of container
           image: ${{ steps.build-image.outputs.image }}
 
         # Deploy Amazon ECS task definition
