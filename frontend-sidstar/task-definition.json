@@ -9,7 +9,7 @@
       "entryPoint": null,
       "portMappings": [
         {
-          "hostPort": 0,
+          "hostPort": 8082,
           "protocol": "tcp",
           "containerPort": 8082
         }
@@ -25,8 +25,8 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 1000,
-      "memoryReservation": 500,
+      "memory": 128,
+      "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
       "image": "675735647272.dkr.ecr.ap-southeast-1.amazonaws.com/sid_frontend:latest",
@@ -52,21 +52,18 @@
   "placementConstraints": [],
   "memory": null,
   "taskRoleArn": "arn:aws:iam::675735647272:role/AWSECSTASKExecutionRole",
-  "compatibilities": ["EXTERNAL", "EC2"],
-  "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:675735647272:task-definition/sid-frontend:1",
-  "family": "sid-frontend",
+  "compatibilities": [
+    "EXTERNAL",
+    "EC2"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:675735647272:task-definition/frontend-sidstar:1",
+  "family": "frontend-sidstar",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     },
     {
       "targetId": null,
@@ -82,7 +79,9 @@
     }
   ],
   "pidMode": null,
-  "requiresCompatibilities": ["EC2"],
+  "requiresCompatibilities": [
+    "EC2"
+  ],
   "networkMode": "bridge",
   "runtimePlatform": null,
   "cpu": null,
