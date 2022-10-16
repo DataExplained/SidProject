@@ -34,6 +34,7 @@ jobs:
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
            # Push the new image ID in the Amazon ECS task definition
+          echo "${{ steps.build-image.outputs.image }}"
 
       - name: Push the new image ID in the Amazon ECS task definition
         id: sid-task
