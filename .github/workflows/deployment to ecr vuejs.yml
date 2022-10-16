@@ -41,6 +41,7 @@ jobs:
           image: $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
         # Deploy Amazon ECS task definition
+        #added inline policy
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
