@@ -39,7 +39,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: ./sidstar-backend/sidstar-backend/task-definition.json
+          task-definition: ./sidstar-backend/task-definition.json
           container-name: sidstar-backend
           image: ${{ steps.build-image.outputs.image }}
 
