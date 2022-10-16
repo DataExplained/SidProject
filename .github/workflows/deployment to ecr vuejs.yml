@@ -38,7 +38,7 @@ jobs:
         with:
           task-definition: ./frontend-sidstar/task-definition.json
           container-name: sid-frontend
-          image: $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          image: ${{ steps.build-image.outputs.image }}
 
         # Deploy Amazon ECS task definition
         # Added Full Access
