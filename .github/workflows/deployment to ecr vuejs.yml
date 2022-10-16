@@ -38,7 +38,7 @@ jobs:
         with:
           task-definition: ./frontend-sidstar/task-definition.json
           container-name: sid-frontend
-          image: ${{ REGISTRY }}/${{ REPOSITORY }}:$IMAGE_TAG
+          image: $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
         # Deploy Amazon ECS task definition
       - name: Deploy Amazon ECS task definition
