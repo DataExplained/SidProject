@@ -38,7 +38,7 @@ jobs:
         with:
           task-definition: ./frontend-sidstar/task-definition.json
           container-name: sid-frontend
-          image: ${{ steps.build-image.outputs.image }}
+          image: 4d69583a36d2d6331bd7cf5ac50b8fa0b067fe13
 
         # Deploy Amazon ECS task definition
       - name: Deploy Amazon ECS task definition
