@@ -31,14 +31,13 @@ jobs:
           cd frontend-sidstar
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$REGISTRY/$REPOSITORY:$IMAGE_TAG"
 
       - name: Push the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ./frontend-sidstar/task-definition.json
-          container-name: sid-container
+          container-name: sid-frontend
           image: ${{ steps.build-image.outputs.image }}
 
         # Deploy Amazon ECS task definition
