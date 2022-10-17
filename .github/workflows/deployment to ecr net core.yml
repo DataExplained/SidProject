@@ -3,6 +3,19 @@ name: .net core Deployment
 on: [push]
 
 jobs:
+  run-Backend-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out code
+        uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+            3.1.x
+            5.0.x
+      - run: dotnet build sidstar-backend/sidstar-backend/sidstar-backend.csproj
+
   build:
     name: Build Image
     runs-on: ubuntu-latest
