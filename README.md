@@ -15,6 +15,8 @@ Frontend Application will display the data in the table format.
 
 ![github-small](/Images/frontend_images_1.png)
 
+The data will be displayed in the table format. User can filter the table based on the Airports that they are looking for.
+
 ## Github action Flow
 
 ### Backend
@@ -26,8 +28,6 @@ Frontend Application will display the data in the table format.
 ### Frontend
 
 ![github-small](/Images/Frontend_github_action_flow.png)
-
-The data will be displayed in the table format. User can filter the table based on the Airports that they are looking for.
 
 ## AWS Cluster
 
