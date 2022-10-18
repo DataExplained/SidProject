@@ -4,13 +4,12 @@
 
 ![github-small](/Images/github_flow.png)
 
-## AWS Cluster
-
-![github-small](/Images/AWS_Cluster_1.png)
-
 ## Software Architecture
 
 ![github](/Images/application_architecture.png)
+
+.Net API will make a request to the public API to retrieve the json data. After formatting the json in the .net API application, the api will return the vuejs request in json format.
+Frontend Application will display the data in the table format.
 
 ## Frontend Application
 
@@ -27,3 +26,7 @@
 ### Frontend
 
 ![github-small](/Images/Frontend_github_action_flow.png)
+
+## AWS Cluster
+
+![github-small](/Images/AWS_Cluster_1.png)
