@@ -15,3 +15,15 @@
 ## Frontend Application
 
 ![github-small](/Images/frontend_images_1.png)
+
+## Github action Flow
+
+### Backend
+
+![github-small](/Images/net_core_github_action.png)
+
+![github-small](/Images/net_core_github_action2.png)
+
+### Frontend
+
+![github-small](/Images/Frontend_github_action_flow.png)
