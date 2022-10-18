@@ -10,7 +10,7 @@
 
 ## Software Architecture
 
-![github-small](/Images/application_architecture.png)
+![github](/Images/application_architecture.png)
 
 ## Frontend Application
 
